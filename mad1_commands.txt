@@ -1,0 +1,15 @@
+python -m venv env
+.\env\Scripts\activate
+pip install -r requirements.txt
+ 
+
+Quiz Master - V1_23f1001699
+
+pip install checksumdir
+
+import checksumdir
+hash = checksumdir.dirhash(r"C:\Users\Pragya Tripathi\Downloads\OJsdXkLGFW\Quiz Master - V1_23f1001699")
+print(hash)
+
+
+python checksum.py
