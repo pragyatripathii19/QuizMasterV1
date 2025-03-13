@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+User Summary - Quiz Master
+{% endblock %}
+
+{% block content %}
+    <h1>User Summary</h1>
+
+    <h2>Score Trend</h2>
+    {% if score_trend_chart %}
+        <img src="data:image/png;base64,{{ score_trend_chart }}" alt="Score Trend Chart">
+    {% else %}
+        <p>No score data available to generate the score trend chart.</p>
+    {% endif %}
+
+    <h2>Average Score per Subject</h2>
+    {% if average_score_chart %}
+        <img src="data:image/png;base64,{{ average_score_chart }}" alt="Average Score Chart">
+    {% else %}
+        <p>No score data available to generate the average score per subject chart.</p>
+    {% endif %}
+
+    <h2>Quizzes Attempted per Week</h2>
+    {% if quizzes_attempted_chart %}
+        <img src="data:image/png;base64,{{ quizzes_attempted_chart }}" alt="Quizzes Attempted Chart">
+    {% else %}
+        <p>No data available to generate the quizzes attempted chart.</p>
+    {% endif %}
+
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    img {
+        max-width: 100%;  /* Make images responsive */
+        height: auto;
+        display: block;
+        margin: 0 auto;  /* Center the images */
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        display: block;  /* Make it a block-level element */
+        width: fit-content; /* Adjust width to content */
+        margin: 20px auto; /* Center the button */
+        padding: 8px 12px;
+        text-decoration: none;
+        border: none;
+    }
+</style>
+{% endblock %}

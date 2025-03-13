@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Add Quiz - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Add Quiz</h1>
+<h2>Chapter: {{ chapter.name }}</h2>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Quiz Title</label>
+        <input type="text" id="title" name="title" class="form-control" required>
+    </div>
+
+    <!-- Hidden chapter_id field -->
+    <input type="hidden" id="chapter_id" name="chapter_id" value="{{ chapter.id }}">
+
+    <div class="form-group">
+        <label for="date_of_quiz">Date of Quiz</label>
+        <input type="date" id="date_of_quiz" name="date_of_quiz" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="time_duration">Time Duration (HH:MM)</label>
+        <input type="time" id="time_duration" name="time_duration" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="remarks">Remarks</label>
+        <textarea id="remarks" name="remarks" class="form-control" rows="3" placeholder="Add any remarks or instructions for the quiz"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Quiz</button>
+</form>
+{% endblock %}

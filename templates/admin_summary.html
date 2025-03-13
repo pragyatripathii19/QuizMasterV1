@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block title %}Admin Summary - Quiz Master{% endblock %}
+
+{% block content %}
+<h1>Admin Summary</h1>
+
+<h2>Subject-wise Top Score</h2>
+<img src="data:image/png;base64,{{ top_score_chart }}" alt="Subject-wise Top Score Chart">
+
+<h2>Average Score in Each Subject</h2>
+<img src="data:image/png;base64,{{ average_score_chart }}" alt="Average Score Chart">
+
+<h2>Percentage of Users Who Attempted Quizzes of Each Subject</h2>
+<img src="data:image/png;base64,{{ users_attempted_chart }}" alt="Users Attempted Chart">
+
+<a href="{{ url_for('admin') }}">Back to Admin Dashboard</a>
+{% endblock %}

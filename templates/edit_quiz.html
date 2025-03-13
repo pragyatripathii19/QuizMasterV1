@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Edit Quiz - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Edit Quiz</h1>
+
+<form method="POST">
+    <div class="form-group">
+        <label for="title">Quiz Title</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{ quiz.title }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="date_of_quiz">Date of Quiz</label>
+        <input type="date" id="date_of_quiz" name="date_of_quiz" class="form-control" value="{{ quiz.date_of_quiz }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="time_duration">Time Duration (HH:MM)</label>
+        <input type="time" id="time_duration" name="time_duration" class="form-control" value="{{ quiz.time_duration.strftime('%H:%M') }}" required>
+    </div>
+
+    <div class="form-group">
+        <label for="remarks">Remarks</label>
+        <textarea id="remarks" name="remarks" class="form-control" rows="3">{{ quiz.remarks }}</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a href="{{ url_for('show_quizzes', id=quiz.chapter_id) }}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

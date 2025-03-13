@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Quiz management 
+{% endblock %}
+
+{% block content %}
+<h1>Quiz management</h1>
+
+<div class="heading">
+    <h2 class="text-muted">All Quizzes for Chapter: {{ chapter.name }}</h2>
+    <a href="{{ url_for('add_quiz', chapter_id=chapter.id) }}" class="btn btn-success">Add Quiz</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quiz ID</th>
+            <th>Chapter ID</th>
+            <th>Quiz Title</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quiz in quizzes %}
+        <tr>
+            <td>{{ quiz.id }}</td>
+            <td>{{ quiz.chapter_id }}</td>
+            <td>{{ quiz.title }}</td>
+            <td>
+                <a href="{{ url_for('edit_quiz', id=quiz.id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('delete_quiz', id=quiz.id) }}" class="btn btn-danger">Delete</a>
+                <a href="{{ url_for('show_questions', quiz_id=quiz.id) }}" class="btn btn-info">Show</a> <!-- New Show Button -->
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+</style>
+{% endblock %}

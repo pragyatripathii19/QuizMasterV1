@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Add Question
+{% endblock %}
+
+{% block content %}
+<h1>Quiz management</h1>
+
+<div class="heading">
+    <h2 class="text-muted">Add Question to Quiz ID: {{ quiz_id }} titled "{{ quiz_title }}"</h2>
+</div>
+
+<form action="{{ url_for('add_question', quiz_id=quiz_id) }}" method="POST">
+    <div class="form-group">
+        <label for="question_statement">Question Statement</label>
+        <textarea id="question_statement" name="question_statement" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="option1">Option 1</label>
+        <input type="text" id="option1" name="option1" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="option2">Option 2</label>
+        <input type="text" id="option2" name="option2" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="option3">Option 3</label>
+        <input type="text" id="option3" name="option3" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="option4">Option 4</label>
+        <input type="text" id="option4" name="option4" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="correct_option">Correct Option</label>
+        <input type="text" id="correct_option" name="correct_option" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+{% endblock %}

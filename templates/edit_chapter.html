@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Edit Chapter - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Edit Chapter</h1>
+<form method="POST">
+    <div>
+        <label for="name">Chapter Name:</label>
+        <input type="text" id="name" name="name" value="{{ chapter.name }}" required>
+    </div>
+    <div>
+        <label for="description">Chapter Description:</label>
+        <textarea id="description" name="description" required>{{ chapter.description }}</textarea>
+    </div>
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1 { text-align: center; }
+    form {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    div { margin-bottom: 15px; }
+    label { display: block; }
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}

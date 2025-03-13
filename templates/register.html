@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Register - Quiz Master
+{% endblock %}
+
+{% block content %}
+    <h1>Register</h1>
+    <form method="post">
+        <label for="username">Username (Email):</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <br>
+        <label for="full_name">Full Name:</label>
+        <input type="text" name="full_name" id="full_name">
+        <br>
+        <label for="qualification">Qualification:</label>
+        <input type="text" name="qualification" id="qualification">
+        <br>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" name="dob" id="dob">
+        <br>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}

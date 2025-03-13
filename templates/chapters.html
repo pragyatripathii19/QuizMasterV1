@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Admin Dashboard - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div class="heading">
+    <h2 class="text-muted">Only showing chapters of {{ subject.name }}</h2>
+    <a href="{{ url_for('add_chapter', subject_id=subject.id) }}" class="btn btn-success">Add Chapter</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Chapter ID</th>
+            <th>Chapter Name</th>
+            <th>Subject Name</th>
+            <th>Number of Quizzes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for chapter in chapters %}
+        <tr>
+            <td>{{ chapter.id }}</td>
+            <td>{{ chapter.name }}</td>
+            <td>{{ subject.name }}</td>
+            <td>{{ chapter.quizzes|length }}</td>
+            <td>
+                <a href="{{ url_for('edit_chapter', id=chapter.id) }}" class="btn btn-primary">Edit</a>
+                <a href="{{ url_for('delete_chapter', id=chapter.id) }}" class="btn btn-danger">Delete</a>
+                <a href="{{ url_for('show_quizzes', id=chapter.id) }}" class="btn btn-info show-btn">Show</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+    }
+
+    .show-btn {
+        background-color: #ffc107; /* Added yellow color to the Show button */
+        color: black;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+</style>
+{% endblock %}

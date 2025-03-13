@@ -1,0 +1,97 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+User Dashboard - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>User Dashboard</h1>
+
+<div class="heading">
+    <h2 class="text-muted">Available Quizzes</h2>
+    <div>
+        <a href="{{ url_for('user_summary') }}" class="btn btn-primary">Show Summary</a>
+        <a href="{{ url_for('scoreboard') }}" class="btn btn-primary">Scoreboard</a>  <!-- Added Scoreboard button -->
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Quiz ID</th>
+            <th>Quiz Title</th>
+            <th>Number of Questions</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for quiz in quizzes %}
+        <tr>
+            <td>{{ quiz.id }}</td>
+            <td>{{ quiz.title }}</td>
+            <td>{{ quiz.num_questions }}</td>
+            <td>{{ quiz.date.strftime('%Y-%m-%d') if quiz.date else 'N/A' }}</td>
+            <td>{{ quiz.duration.strftime('%H:%M') if quiz.duration else 'N/A' }}</td>
+            <td>
+                <a href="{{ url_for('view_quiz', quiz_id=quiz.id) }}" class="btn btn-info">View</a>
+                <a href="{{ url_for('start_quiz', quiz_id=quiz.id) }}" class="btn btn-success">Start</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: white;
+        border: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+{% endblock %}

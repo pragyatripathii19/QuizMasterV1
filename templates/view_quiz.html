@@ -1,0 +1,93 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+View Quiz - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Quiz Details</h1>
+
+<div class="quiz-details">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <td>{{ quiz.id }}</td>
+        </tr>
+        <tr>
+            <th>Subject</th>
+            <td>{{ quiz.chapter.subject.name }}</td>
+        </tr>
+        <tr>
+            <th>Chapter</th>
+            <td>{{ quiz.chapter.name }}</td>
+        </tr>
+        <tr>
+            <th>Number of Questions</th>
+            <td>{{ quiz.questions|length }}</td>
+        </tr>
+        <tr>
+            <th>Scheduled Date</th>
+            <td>{{ quiz.date_of_quiz.strftime('%Y-%m-%d') if quiz.date_of_quiz else 'Not Scheduled' }}</td>
+        </tr>
+        <tr>
+            <th>Duration</th>
+            <td>{{ quiz.time_duration.strftime('%H:%M') if quiz.time_duration else 'N/A' }}</td>
+        </tr>
+    </table>
+</div>
+
+<div class="actions">
+    <a href="{{ url_for('user_dashboard') }}" class="btn btn-secondary">Close</a>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .quiz-details {
+        margin: 20px auto;
+        max-width: 600px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+
+    .actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        border: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+        color: white;
+    }
+</style>
+{% endblock %}

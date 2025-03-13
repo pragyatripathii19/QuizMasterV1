@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Quiz Management
+{% endblock %}
+
+{% block content %}
+<h1>Quiz management</h1>
+
+<div class="heading">
+    <h2 class="text-muted">Questions of Quiz ID: {{ quiz_id }} titled "{{ quiz_title }}"</h2>
+    <a href="{{ url_for('add_question', quiz_id=quiz_id) }}" class="btn btn-success">Add Question</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Qn ID</th>
+            <th>Qn Statement</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.question_statement }}</td>
+            <td>
+                <a href="{{ url_for('edit_question', id=question.id) }}" class="btn btn-primary">Edit</a>
+                <form method="POST" action="{{ url_for('delete_question', id=question.id) }}" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
+{% block style %}
+<style>
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+        border: none;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+        border: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+</style>
+{% endblock %}

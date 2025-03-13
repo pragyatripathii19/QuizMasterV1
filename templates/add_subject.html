@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Add Subject - Quiz Master
+{% endblock %}
+
+{% block content %}
+<h1>Add Subject</h1>
+<form method="post">
+    <div>
+        <label for="subjectName">Subject Name:</label>
+        <input type="text" id="subjectName" name="name" required>
+    </div>
+    <div>
+        <label for="subjectDescription">Description:</label>
+        <textarea id="subjectDescription" name="description" required></textarea>
+    </div>
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    h1 { text-align: center; }
+    form {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    div { margin-bottom: 15px; }
+    label { display: block; }
+</style>
+{% endblock %}

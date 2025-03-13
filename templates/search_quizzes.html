@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block title %}Quiz Details - Quiz Master{% endblock %}
+
+{% block content %}
+<h1>Quiz Details</h1>
+
+<table class="table">
+    <tr>
+        <th>Quiz ID</th>
+        <td>{{ quiz.id }}</td>
+    </tr>
+    <tr>
+        <th>Quiz Title</th>
+        <td>{{ quiz.title }}</td>
+    </tr>
+    <tr>
+        <th>Subject Name</th>
+        <td>{{ quiz.chapter.subject.name }}</td>
+    </tr>
+    <tr>
+        <th>Chapter Name</th>
+        <td>{{ quiz.chapter.name }}</td>
+    </tr>
+    <tr>
+        <th>Number of Questions</th>
+        <td>{{ num_questions }}</td>
+    </tr>
+</table>
+
+<h2>Highest and Lowest Scores in this Quiz</h2>
+{% if chart_image %}
+    <img src="data:image/png;base64,{{ chart_image }}" alt="Scores Chart">
+{% else %}
+    <p>No scores available to generate the chart.</p>
+{% endif %}
+
+<a href="{{ url_for('admin_search') }}">Back to Admin Dashboard</a>
+{% endblock %}

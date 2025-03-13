@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Start Quiz - Quiz Master
+{% endblock %}
+
+{% block content %}
+<div class="quiz-header">
+    <div class="question-counter">
+        Q.No {{ current_question_index + 1 }}/{{ total_questions }}
+    </div>
+</div>
+
+<div class="quiz-content">
+    <h2>{{ question.question_statement }}</h2>
+    <form method="POST" action="{{ url_for('start_quiz', quiz_id=quiz.id) }}">
+        {% for option in options %}
+        <div class="form-check">
+            <input type="radio" name="selected_option" id="option{{ option.id }}" value="{{ option.id }}" {% if selected_option == option.id %}checked{% endif %} required>
+            <label for="option{{ option.id }}">{{ option.text }}</label>
+        </div>
+        {% endfor %}
+        <div class="quiz-actions">
+            <button type="submit" name="action" value="save_next" class="btn btn-primary">Save and Next</button>
+            <button type="submit" name="action" value="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+    .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .question-counter {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .quiz-content {
+        margin-top: 20px;
+    }
+
+    .form-check {
+        margin-bottom: 10px;
+    }
+
+    .quiz-actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: white;
+    }
+</style>
+{% endblock %}
