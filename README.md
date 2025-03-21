@@ -5,6 +5,8 @@ Repository for **The Quiz Master - V1** – IITM BS Course Project.
 
 The Quiz Master - V1 is an interactive multi-user application designed to help users improve their exam preparation through targeted quizzes and performance tracking. The platform supports two roles: **User** and **Admin**. Users can attempt quizzes, track their scores, and monitor progress through performance insights. Admins can manage subjects, chapters, quizzes, and user data, with additional access to platform-wide performance metrics.  
 
+This project was completed as part of the **IITM BS Course**, where I achieved a **Grade: 90 / S Grade (Top Grade)**. 
+
 ---
 
 ## 🛠️ Technologies Used  
